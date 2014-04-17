@@ -53,7 +53,7 @@ class ODBC{
 		$obj = &$this;
 		$obj->openConn($dbname);
 		$res = odbc_exec($obj->conn,$query) or die(odbc_errormsg($obj->conn));
-		if ($res && $res){
+		if ($res && odbc_num_rows($res)>0){
 			$new = array();
 			while($row=odbc_fetch_array($res)){
 				$new[]=&$row;
@@ -69,7 +69,7 @@ class ODBC{
 		$obj = &$this;
 		$obj->openConn($dbname);
 		$res = odbc_exec($obj->conn,$query) or die(odbc_errormsg($obj->conn));
-		if ($res && $res){
+		if ($res && odbc_num_rows($res)>0){
 			$new = array();
 			if($row=odbc_fetch_array($res)){
 				$new[]=&$row;
